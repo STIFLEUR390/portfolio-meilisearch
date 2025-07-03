@@ -1,0 +1,101 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Cursor Rules – Nuxt 3, TypeScript, Nuxt UI & Tailwind CSS
+
+## Structure du projet
+
+- Respecter l’arborescence standard Nuxt 3 :  
+  - `components/` : composants Vue réutilisables  
+  - `composables/` : fonctions composables (logique réutilisable)  
+  - `layouts/` : layouts d’application  
+  - `middleware/` : middlewares de routes  
+  - `pages/` : pages (définissent les routes)  
+  - `plugins/` : plugins Nuxt  
+  - `server/` : API et logique serveur  
+  - `static/` : assets statiques  
+  - `store/` : stores Pinia (optionnel mais recommandé)  
+  - `utils/` : fonctions utilitaires
+
+- Organiser les stores Pinia par fonctionnalité ou domaine métier pour une meilleure maintenabilité.
+
+## Fichiers sensibles et à ne pas modifier
+
+- Ne jamais modifier manuellement les fichiers générés (`.nuxt/`, `dist/`, `node_modules/`).
+- Ne jamais versionner :  
+  - `node_modules/`  
+  - `.nuxt/`  
+  - `dist/`  
+  - `*.local`  
+  - `*.env`  
+  - `package-lock.json` (sauf pour garantir le verrouillage des dépendances).
+
+## Bonnes pratiques générales
+
+- **TypeScript** :  
+  - Utiliser TypeScript partout.  
+  - Préférer les `interface` aux `type` pour l’extensibilité.  
+  - Éviter les `enum`, préférer les objets map pour la sécurité de type et la flexibilité.
+
+- **Style de code** :  
+  - Privilégier le pattern fonctionnel et déclaratif, éviter les classes.  
+  - Utiliser la Composition API avec ``.
+  - Modulariser la logique métier avec des composables (`composables/useMaFonction.ts`).
+  - Favoriser l’itération et la factorisation (DRY).
+
+- **Nommage** :  
+  - Composants : `PascalCase.vue` (ex : `MyComponent.vue`)  
+  - Composables : `useNom.ts` (ex : `useCounter.ts`)  
+  - Layouts, pages, plugins, stores : `kebab-case`  
+  - Fonctions utilitaires : `camelCase`.
+
+- **Imports automatiques** :  
+  - Ne pas importer manuellement `ref`, `useState`, `useRouter` : Nuxt 3 les autoimporte.
+
+## Règles spécifiques Nuxt 3
+
+- Utiliser `@nuxtjs/color-mode` et la fonction `useColorMode()` pour la gestion du mode sombre/clair.
+- Utiliser VueUse pour la réactivité avancée (sauf gestion du color mode).
+- Utiliser le dossier `server/api` pour toute logique serveur, accès base de données, authentification ou traitement de données sensibles.
+- Utiliser `useRuntimeConfig` pour accéder aux variables d’environnement côté serveur et client.
+- Configurer le thème global dans `app.config.ts`.
+- Pour le SEO, utiliser `useHead` et `useSeoMeta`.
+- Pour les images, préférer `` ou `` et pour les icônes, le module Nuxt Icons.
+
+## Gestion des données
+
+- Utiliser `useFetch` pour la récupération standard de données avec SSR, cache et réactivité aux changements d’URL.
+- Utiliser `$fetch` pour les requêtes côté client (ex : dans les handlers d’événements).
+- Utiliser `useAsyncData` pour les logiques de récupération complexes (multi-API, cache custom, gestion d’erreurs).
+- Option `server: false` dans `useFetch`/`useAsyncData` : force la récupération côté client uniquement.
+- Option `lazy: true` : diffère la récupération de données non critiques après le rendu initial.
+
+## UI & Styling
+
+- Utiliser Nuxt UI et Tailwind CSS pour la construction des interfaces et le style.
+- Implémenter le responsive avec Tailwind CSS (mobile-first).
+- Ne jamais modifier directement les fichiers générés par Tailwind (`tailwind.config.js`), préférer l’extension via la configuration Nuxt.
+
+## Plugins et dépendances
+
+- Placer les plugins Nuxt dans le dossier `plugins/`, nommés en `kebab-case`.
+- Charger les modules via le tableau `@nuxt/modules` dans `nuxt.config.ts`.
+- Utiliser les modules Nuxt officiels avant d’implémenter une solution custom (ex : `@nuxt/auth` pour l’authentification).
+
+## Sécurité & Performance
+
+- Toujours activer ESLint avec le module officiel :  
+  - `npx nuxi module add eslint`  
+  - Personnaliser `eslint.config.mjs` selon les besoins.
+- Optimiser les assets (lazy loading images, minimisation CSS/JS).
+- Utiliser Lighthouse pour auditer les performances.
+- Implémenter des tests unitaires et d’intégration (Jest, Vitest, Vue Test Utils).
+
+## À ne pas toucher / Éviter
+
+- Ne jamais modifier les fichiers générés (`.nuxt/`, `dist/`), ni les fichiers de configuration des dépendances sans concertation.
+- Ne pas surcharger les composants Nuxt UI natifs : préférer l’extension via slots ou props.
+- Ne pas dupliquer la logique métier : factoriser dans des composables ou utilitaires.
+

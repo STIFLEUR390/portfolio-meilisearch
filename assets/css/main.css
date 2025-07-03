@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@import "tailwindcss-primeui";
+@import "./all.css";
+@import 'material-icons/iconfont/material-icons.css';
+@custom-variant dark (&:where(.dark, .dark *));
+* {
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: #475569;
+  }
+
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .cta-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+  }
+  
+  .cta-button:hover::before {
+    left: 100%;
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+  }
+
+  #three-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+  }
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transform-origin: left;
+    z-index: 50;
+  }
+
+  .nav-link {
+    position: relative;
+    color: #64748b;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #3b82f6;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.3s;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .skill-bar {
+    width: 0;
+    transition: width 1s ease-in-out;
+  }
+
+  .testimonial-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .testimonial-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .pricing-card {
+    transition: all 0.3s ease;
+  }
+  
+  .pricing-card:hover {
+    transform: scale(1.05);
+  }
+
+  .blog-card {
+    transition: all 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-field {
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .form-field:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .stars {
+    color: #fbbf24;
+  }

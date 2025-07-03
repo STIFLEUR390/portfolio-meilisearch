@@ -1,0 +1,12 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## Auto-imports Vue & PrimeVue
+### Vue :
+- Ne jamais importer manuellement les composables de base (ref, reactive, computed, watch, onMounted, etc.) dans les fichiers .vue ou .ts : Nuxt 3 les autoimporte.
+### PrimeVue :
+- Si PrimeVue est configuré via le module Nuxt ou un plugin global, ne pas importer manuellement les composants PrimeVue dans les fichiers .vue : ils sont auto-enregistrés.
+
+- Si un composant PrimeVue n’est pas global, alors seulement l’importer localement.
