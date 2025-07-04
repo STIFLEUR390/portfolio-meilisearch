@@ -27,6 +27,7 @@
     "@sentry/nuxt": "^9.33.0",
     "@tresjs/nuxt": "^4.0.0",
     "aws-sdk": "^2.1692.0",
+    "better-sqlite3": "^11.10.0",
     "eslint": "^9.30.0",
     "material-icons": "^1.13.14",
     "nuxt": "^3.17.5",
