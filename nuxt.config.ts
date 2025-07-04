@@ -43,9 +43,8 @@ export default defineNuxtConfig({
     sourceMapsUploadOptions: {
       org: 'aplix',
       project: 'nuxt-portfolio',
-      url: 'https://glitchtip-ywgws00kck80ggsgcoksk4s0.applix.fr/',
+      url: process.env.SENTRY_URL || 'https://glitchtip-ywgws00kck80ggsgcoksk4s0.applix.fr/',
     },
-    dsn: process.env.SENTRY_DSN || "https://c821d2fc811749f0888bd580ddf5703f@glitchtip-ywgws00kck80ggsgcoksk4s0.applix.fr/5"
   },
 
   meilisearch: {
